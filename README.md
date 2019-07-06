@@ -22,6 +22,23 @@ app.all('*', function(req, res, next) {
 //添加自定义请求头Authorization
 res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
 ````
+##  路由
+	const express = require('express');
+
+	const Mobile = express.Router()
+	// 连接数据库
+	const mongoose = require('../model/db.js')
+	//引入用户模型
+	require('../model/user.js')
+	const users=mongoose.model('users')
+
+	Mobile.get('/',(req,res)=>{
+		res.json({
+			name: '123'
+		})
+	})
+
+	module.exports = Mobile
 ##  MongoDB数据库
 ####  1、连接MongODB数据库
 	//连接MongODB数据库
@@ -33,6 +50,7 @@ res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
 			console.log('连接成功')
 		}
 	})
+	module.exports = mongoose
 ####  2、引入字符集模型
 	//引入分类模型
 	require('../models/text')
